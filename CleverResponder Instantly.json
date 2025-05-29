@@ -230,7 +230,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{\n{\n\"eaccount\": $json.eaccount,\n\"reply_to_uuid\": $json.reply_to_uuid,\n\"subject\": $json.subject,\n\"body\": {\n\"html\": $json.body.html\n},\n\"cc_address_email_list\": $('Set Email Data').item.json.CC,\n\"bcc_address_email_list\": $('Set Email Data').item.json.BCC\n}\n}}",
+        "jsonBody": "={{\n{\n\"eaccount\": $json.eaccount,\n\"reply_to_uuid\": $json.reply_to_uuid,\n\"subject\": $json.subject,\n\"body\": {\n\"html\": $json.body.html\n},\n\"cc_address_email_list\": $json.cc_address_email_list,\n\"bcc_address_email_list\": $json.bcc_address_email_list\n}\n}}",
         "options": {
           "response": {
             "response": {
@@ -336,8 +336,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.3,
       "position": [
-        -180,
-        260
+        -200,
+        280
       ],
       "id": "3e6e4518-278a-4e63-bef0-4f5f8d415650",
       "name": "Manual Reply Notification",
@@ -417,7 +417,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const eaccount = $('Set Email Data').first().json.fromMail;\nconst reply_to_uuid = $('Set Email Data').first().json.UUID;\nconst subject = $('Extract More Info').first().json.items[0].subject;\nconst messageReplyTemp = $('AI Reply Extraction').first().json.aiGeneratedReply;\nconst messageReply = messageReplyTemp.replace(/\\n/g,\"<br>\")\nconst originalBodyTemp = $('Set Email Data').first().json.Sent;\nconst originalBody = originalBodyTemp.replace(/\\n/g,\"<br>\")\nconst cc = $('Set Email Data').first().json.CC;\nconst bcc = $('Set Email Data').first().json.BCC;\n\nreturn [\n  {\n    eaccount,\n    reply_to_uuid,\n    subject,\n    body: {\n      html: messageReply + //\"<br>\" + originalBody,\n    },\n    cc_address_email_list: cc,\n    bcc_address_email_list: bcc,\n  },\n];\n"
+        "jsCode": "const eaccount = $('Set Email Data').first().json.fromMail;\nconst reply_to_uuid = $('Set Email Data').first().json.UUID;\nconst subject = $('Extract More Info').first().json.items[0].subject;\nconst messageReplyTemp = $('AI Reply Extraction').first().json.aiGeneratedReply;\nconst messageReply = messageReplyTemp.replace(/\\n/g,\"<br>\")\nconst originalBodyTemp = $('Set Email Data').first().json.Sent;\nconst originalBody = originalBodyTemp.replace(/\\n/g,\"<br>\")\nconst meetingLink = $('Set Email Data').first().json.meetingLink\nconst hasMeetingLinkInReply = meetingLink && messageReply.includes(meetingLink);\nconst cc = hasMeetingLinkInReply ? $('Set Email Data').first().json.CC : \"\"\nconst bcc = hasMeetingLinkInReply ? $('Set Email Data').first().json.BCC : \"\"\n\nreturn [\n  {\n    eaccount,\n    reply_to_uuid,\n    subject,\n    body: {\n      html: messageReply, //+ \"<br>\" + originalBody,\n    },\n    cc_address_email_list: cc,\n    bcc_address_email_list: bcc,\n  },\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -634,44 +634,46 @@
           "headers": {
             "host": "cleverviral1.app.n8n.cloud",
             "user-agent": "axios/0.21.4",
-            "content-length": "3916",
+            "content-length": "2227",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare; loops=1; subreqs=1",
             "cf-connecting-ip": "3.239.192.87",
             "cf-ew-via": "15",
             "cf-ipcountry": "US",
-            "cf-ray": "945c228ae45d81d9-IAD",
+            "cf-ray": "944306dd305f88d0-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "cf-worker": "n8n.cloud",
             "content-type": "application/json",
-            "x-forwarded-for": "3.239.192.87, 172.70.175.75",
+            "x-forwarded-for": "3.239.192.87, 104.23.209.33",
             "x-forwarded-host": "cleverviral1.app.n8n.cloud",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "traefik-prod-users-gwc-18-7959cfc789-hw6gf",
+            "x-forwarded-server": "traefik-prod-users-gwc-18-7959cfc789-ft96v",
             "x-is-trusted": "yes",
             "x-real-ip": "3.239.192.87"
           },
           "params": {},
           "query": {},
           "body": {
-            "timestamp": "2025-05-26T09:09:39.399Z",
+            "timestamp": "2025-05-23T08:01:41.676Z",
             "event_type": "reply_received",
             "workspace": "08443b80-e0c6-4c24-b334-050102e100a1",
-            "campaign_id": "196a7c28-ce7a-45ee-a726-272d4ec4235d",
-            "unibox_url": "https://app.instantly.ai/app/unibox?thread_search=einstein1410@gmail.com&selected_wks=08443b80-e0c6-4c24-b334-050102e100a1",
+            "campaign_id": "3ca55f92-d78e-4ef4-9bf1-5be2629d4dbf",
+            "unibox_url": "https://app.instantly.ai/app/unibox?thread_search=krunal@cleverviral.co&selected_wks=08443b80-e0c6-4c24-b334-050102e100a1",
             "campaign_name": "AI Responder Campaign",
-            "email_account": "b.clark@corenestle.info",
-            "reply_text_snippet": "Hey!\nJust chatted with my team member. We are interested in your services. Please we would like to get a demo.\n\n",
-            "is_first": false,
-            "lead_email": "einstein1410@gmail.com",
-            "email": "einstein1410@gmail.com",
+            "email_account": "ashley@hellosnapattack.info",
+            "reply_text_snippet": "Hey!\nNo, I am not interested. Thanks.\n\n",
+            "is_first": true,
+            "lead_email": "krunal@cleverviral.co",
+            "email": "krunal@cleverviral.co",
             "lastName": "Shah",
-            "firstName": "KD",
-            "reply_subject": "Re: Cybersecurity made easy",
-            "reply_text": "Hey!\nJust chatted with my team member. We are interested in your services.\nPlease we would like to get a demo.\n\nOn Mon, May 26, 2025 at 2:36 PM Brooklyn Clark <b.clark@corenestle.info>\nwrote:\n\n> Hi Krunalkumar, Thank you for your quick response—I completely understand\n> that now may not be the right time. I appreciate your consideration and\n> wanted to let you know that we’re always here if your needs change or if\n> you simply want to explore how our approach might help streamline your\n> current operations. Feel free to reach out when the timing is better for\n> you. Best regards, Brooklyn Clark\n>\n\n\n-- \nRegards,\nKrunalkumar Shah\neinstein1410@gmail.com\n+91 82007 13617\nhttps://scholar.google.com/citations?user=dxFD3scAAAAJ\nhttps://www.linkedin.com/in/realkrunalkumar\nhttps://www.youracclaim.com/users/officialkrunalkumar/badges\nhttps://krunalkumar.vercel.app\n",
-            "reply_html": "<div dir=\"ltr\">Hey!<div>Just chatted with my team member. We are interested in your services. Please we would like to get a demo.</div></div><br><div class=\"gmail_quote gmail_quote_container\"><div dir=\"ltr\" class=\"gmail_attr\">On Mon, May 26, 2025 at 2:36 PM Brooklyn Clark &lt;<a href=\"mailto:b.clark@corenestle.info\">b.clark@corenestle.info</a>&gt; wrote:<br></div><blockquote class=\"gmail_quote\" style=\"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex\"><u></u>\n\n  \n    \n    \n  \n  <div>\n  Hi Krunalkumar, Thank you for your quick response—I completely understand that now may not be the right time. I appreciate your consideration and wanted to let you know that we’re always here if your needs change or if you simply want to explore how our approach might help streamline your current operations. Feel free to reach out when the timing is better for you. Best regards, Brooklyn Clark</div>\n</blockquote></div><div><br clear=\"all\"></div><div><br></div><span class=\"gmail_signature_prefix\">-- </span><br><div dir=\"ltr\" class=\"gmail_signature\"><div dir=\"ltr\"><span style=\"color:rgb(34,34,34)\">Regards,</span><br style=\"color:rgb(34,34,34)\"><span style=\"color:rgb(34,34,34)\">Krunalkumar Shah</span><br style=\"color:rgb(34,34,34)\"><a href=\"mailto:einstein1410@gmail.com\" style=\"color:rgb(17,85,204)\" target=\"_blank\">einstein1410@gmail.com</a><br style=\"color:rgb(34,34,34)\"><span style=\"color:rgb(34,34,34)\">+91 82007 13617</span><br style=\"color:rgb(34,34,34)\"><a href=\"https://scholar.google.com/citations?user=dxFD3scAAAAJ\" style=\"color:rgb(17,85,204)\" target=\"_blank\">https://scholar.google.com/citations?user=dxFD3scAAAAJ</a><br style=\"color:rgb(34,34,34)\"><a href=\"https://www.linkedin.com/in/realkrunalkumar\" style=\"color:rgb(17,85,204)\" target=\"_blank\">https://www.linkedin.com/in/realkrunalkumar</a><br style=\"color:rgb(34,34,34)\"><a href=\"https://www.youracclaim.com/users/officialkrunalkumar/badges\" target=\"_blank\">https://www.youracclaim.com/users/officialkrunalkumar/badges<br style=\"color:rgb(34,34,34)\"></a><span style=\"color:rgb(34,34,34)\"><a href=\"https://krunalkumar.vercel.app\" target=\"_blank\">https://krunalkumar.vercel.app</a></span></div></div>\n"
+            "firstName": "Krunalkumar",
+            "step": 1,
+            "variant": 1,
+            "reply_subject": "Re: Information Technology Service",
+            "reply_text": "Hey!\nNo, I am not interested. Thanks.\n\nOn Fri, 23 May 2025 at 13:30, Ashley Turner <ashley@hellosnapattack.info>\nwrote:\n\n> Hello Krunalkumar\n> Our company is providing various information technology related services.\n> Are you interested? Here's the list of services:\n> 1) Website Development\n> 2) Cybersecurity\n> 3) CRM and workflow automation\n> 4) Multimedia\n> 5) Human Resource\n> If you decide to go with our services then we can give you a massive\n> discount/discounts on the services.\n> Feel free to reach.\n> Best,\n> IT Services Pvt Ltd\n>\n",
+            "reply_html": "<div dir=\"ltr\">Hey!<div>No, I am not interested. Thanks.</div></div><br><div class=\"gmail_quote gmail_quote_container\"><div dir=\"ltr\" class=\"gmail_attr\">On Fri, 23 May 2025 at 13:30, Ashley Turner &lt;<a href=\"mailto:ashley@hellosnapattack.info\">ashley@hellosnapattack.info</a>&gt; wrote:<br></div><blockquote class=\"gmail_quote\" style=\"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex\"><div>Hello Krunalkumar </div><div>Our company is providing various information technology related services. Are you interested? Here&#39;s the list of services:</div><div>1) Website Development</div><div>2) Cybersecurity</div><div>3) CRM and workflow automation</div><div>4) Multimedia</div><div>5) Human Resource</div><div>If you decide to go with our services then we can give you a massive discount/discounts on the services.</div><div>Feel free to reach.</div><div>Best,</div><div>IT Services Pvt Ltd</div></blockquote></div>\n"
           },
           "webhookUrl": "https://cleverviral1.app.n8n.cloud/webhook/694a977a-f989-4ed1-8ce8-09e199e26267",
           "executionMode": "production"
@@ -898,7 +900,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "18a894f1-8e59-4132-a966-ce8d5e7cb632",
+  "versionId": "4da384b4-d6f7-4f3c-ac05-623c7dc651e3",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "155e035c269e06721be15adcca16a8df7ca2f440e69e53064795835bd4a74fd8"
