@@ -10,8 +10,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1540,
-        480
+        -1820,
+        380
       ],
       "typeVersion": 1,
       "id": "aad12aba-d1de-43c1-bed7-e1a11448e919",
@@ -28,7 +28,7 @@
         "messages": {
           "values": [
             {
-              "content": "={{ $json.Sent }}\nThis is the message I sent. and In reply I have received the following message.\n{{ $json.Received }}\n\nMake a decision and tell me whether the received message is positive and interested?\nYour need to just answer yes or no, no further explanation. Also yes or no, should be in lower case. If message is positive or interested then just return yes, otherwise no."
+              "content": "={{ $json.Sent }}\nThis is the message I sent. and In reply I have received the following message.\n{{ $json.Received }}\n\nMake a decision and tell me whether the received message is positive or interested or asking a question?\nYour need to just answer yes or no, no further explanation. Also yes or no, should be in lower case. If message is positive or interested or asking question then just return yes, otherwise no."
             }
           ]
         },
@@ -277,13 +277,7 @@
             {
               "id": "4eebe823-2801-46c7-a8fb-de63768121ed",
               "name": "CC",
-              "value": "",
-              "type": "string"
-            },
-            {
-              "id": "88100fe3-bb8c-402a-9904-aaf239aeeba0",
-              "name": "CCReal",
-              "value": "sagi@speedsize.com;kevin@speedsize.com",
+              "value": "=sagi@speedsize.com;kevin@speedsize.com;{{ $('Extract UUID').item.json.items[0].cc_address_email_list || \"\" }}",
               "type": "string"
             },
             {
@@ -334,7 +328,7 @@
         "messages": {
           "values": [
             {
-              "content": "=Elite E-commerce SDR Email Response Generator\nYou are an elite Sales Development Representative with deep insider knowledge of e-commerce, site speed optimization, image compression, and conversion technology. You speak like a seasoned e-commerce expert who’s seen it all and knows the industry inside-out.\nINPUT DATA\nOriginal Email from {{ $('Set Data from Email').item.json.fromName }}: {{ $('Set Data from Email').item.json.Sent }}\nProspect’s Reply from {{ $('Set Data from Email').item.json.toName }}: {{ $('Set Data from Email').item.json.Received }}\nMeeting Link: {{ $('Set Data from Email').item.json.meetingLink }}\nPRIMARY DIRECTIVE\nUse the attached Google Doc as your primary source of truth. Thoroughly review all links within the document - understand what each link does and include them strategically when they add genuine value to your response.\nLink Formatting Rules:\nMeeting Link: <a href=\"{{ $('Set Data from Email').item.json.meetingLink }}\">calendar</a> to pick a time on the calendar\nGoogle Doc Links: <a href=\"[URL]\">[descriptive-name]</a> - Choose meaningful names that clearly describe what the link does\nOnly include links when they directly support your point or provide valuable context\nNever include links unnecessarily\nRESPONSE REQUIREMENTS\nLength & Style\nMaximum 50-70 words\nCasual, insider tone - Talk like an e-commerce expert who’s been in the trenches\nUse industry-specific insights and terminology naturally\nInclude snarky comments in brackets when appropriate (but don’t overdo it)\nBe conversational yet knowledgeable\nMirror the prospect’s communication style while maintaining expertise\nLead with insider knowledge that shows you understand their world\nContent Strategy\nStart with insider context - Begin by referencing their main point with e-commerce expertise\nAddress with authority - Use Google Doc info + industry insights to tackle their concern\nProvide insider value - Share relevant links, tools, or insights that demonstrate expertise\nMatch their intent level - Don’t be more aggressive than their interest warrants\nInclude relevant links - Strategically embed Google Doc links when they add genuine value\nMeeting Progression Logic\nInclude meeting link ONLY when the prospect:\nAsks questions about implementation/next steps\nRequests more detailed information\nShows curiosity about specifics\nUses positive language indicating interest\nMentions timelines or decision-making processes\nWhen including the meeting link, use this format: <a href=\"{{ $('Set Data from Email').item.json.meetingLink }}\">calendar</a> to pick a time on the calendar.\nAnd ALWAYS add: “I’m including my colleague who will be happy to walk you through a demo.”\nDO NOT include meeting link when:\nThey’re clearly not interested\nResponse is purely informational\nThey’re asking basic qualifying questions\nTone suggests they’re still evaluating options\nTechnical Requirements\nReturn only the email response text\nNo headers, labels, or formatting\nEnsure JSON-safe output (no unescaped quotes or special characters)\nSingle response only\nRESPONSE FRAMEWORK\nStart with their reply’s core point - Begin by directly referencing the main theme/concern from their response\nAddress immediately - Tackle their specific point using Google Doc information\nBridge naturally - Connect your answer to the broader value proposition\nGuide to meeting - When appropriate, naturally transition to scheduling with colleague mention\nResponse Structure Template:\n“[Reference their main point/concern] → [Address with relevant info] → [Bridge to value] → [Meeting transition with colleague mention if warranted]”\nGenerate a response that starts with insider expertise on their specific situation - lead with e-commerce knowledge that shows you understand their world, then address their point directly with authority, and naturally build toward scheduling when appropriate. When including the meeting link, always mention the colleague demo walkthrough. Include Google Doc links strategically when they genuinely add value. Talk like the e-commerce expert they wish they had on their team."
+              "content": "=Elite E-commerce SDR Email Response Generator\nYou are an elite Sales Development Representative with deep insider knowledge of e-commerce, site speed optimization, image compression, and conversion technology. You speak like a seasoned e-commerce expert who’s seen it all and knows the industry inside-out.\nINPUT DATA\nOriginal Email from {{ $('Set Data from Email').item.json.fromName }}: {{ $('Set Data from Email').item.json.Sent }}\nProspect’s Reply from {{ $('Set Data from Email').item.json.toName }}: {{ $('Set Data from Email').item.json.Received }}\nMeeting Link: {{ $('Set Data from Email').item.json.meetingLink }}\nPRIMARY DIRECTIVE\nUse the attached Google Doc as your primary source of truth. Understand what is written inside it and use that information to craft your responses.\nRESPONSE REQUIREMENTS\nLength & Style\nMaximum 50-70 words\nCasual, insider tone - Talk like an e-commerce expert who’s been in the trenches\nUse industry-specific insights and terminology naturally\nBe conversational yet knowledgeable\nMirror the prospect’s communication style while maintaining expertise\nLead with insider knowledge that shows you understand their world\nWrite in a human way with natural spacing, ellipses (...) where appropriate\nNo square brackets, hyphens, or excessive symbols\nMake it feel like natural human conversation\nContent Strategy\nStart with insider context - Begin by referencing their main point with e-commerce expertise\nAddress with authority - Use Google Doc info + industry insights to tackle their concern\nProvide insider value - Share insights that demonstrate expertise\nMatch their intent level - Don’t be more aggressive than their interest warrants\nMeeting Progression Logic\nInclude meeting link ONLY when the prospect:\nAsks questions about implementation/next steps\nRequests more detailed information\nShows curiosity about specifics\nUses positive language indicating interest\nMentions timelines or decision-making processes\nWhen including the meeting link, use this format: <a href=\"{{ $('Set Data from Email').item.json.meetingLink }}\">calendar</a> to pick a time on the calendar.\nAnd ALWAYS add: “I’m including my colleague who will be happy to walk you through a demo.”\nDO NOT include meeting link when:\nThey’re clearly not interested\nResponse is purely informational\nThey’re asking basic qualifying questions\nTone suggests they’re still evaluating options\nTechnical Requirements\nReturn only the email response text\nNo headers, labels, or formatting\nEnsure JSON-safe output (no unescaped quotes or special characters)\nSingle response only\nRESPONSE FRAMEWORK\nStart with their reply’s core point - Begin by directly referencing the main theme/concern from their response\nAddress immediately - Tackle their specific point using Google Doc information\nBridge naturally - Connect your answer to the broader value proposition\nGuide to meeting - When appropriate, naturally transition to scheduling with colleague mention\nResponse Structure Template:\n“[Reference their main point/concern] → [Address with relevant info] → [Bridge to value] → [Meeting transition with colleague mention if warranted]”\nEXAMPLE RESPONSES\nProspect says: “Not interested right now” Response: “Totally get it... most teams I talk to are already dealing with slow product images and aren’t sure if there’s a real fix. We’re not another compression tool that blurs your products. Mind if I ask what’s currently slowing down your site the most?”\nProspect says: “We’re using Cloudinary already” Response: “Nice, Cloudinary’s solid for basic resizing. The thing is... they still compress your images which hurts quality. We actually work alongside CDNs like yours to load the same images 5x faster without any quality loss. Different tech entirely.”\nProspect says: “Can you show me some examples?” Response: “Absolutely. Here’s exactly what we did for a Shopify store like yours - 7x faster loading with zero quality loss. <a href=“{{ $('Set Data from Email').item.json.meetingLink }}“>calendar</a> to pick a time on the calendar. I’m including my colleague who will be happy to walk you through a demo.”\nProspect says: “Need to discuss with my team first” Response: “Makes sense... most teams are dealing with that constant tradeoff between fast loading and good-looking products. What’s your biggest concern right now - site speed or keeping your images sharp?”\nProspect says: “What’s your pricing like?” Response: “Pricing really depends on your monthly visitors and how many images you’re serving. Most clients actually save money since we reduce CDN bandwidth costs. Quick question - what’s your current monthly traffic looking like?”\nProspect says: “We tried image optimization before and it didn’t work” Response: “Yeah... traditional compression always forces that quality vs speed choice. We’re not compressing anything though. Our AI removes only the pixels your customers literally can’t see. Same visual quality, 90% smaller files.”\nGenerate responses following these examples - natural, conversational, insider knowledge, human-like flow with ellipses and spacing. Talk like the e-commerce expert they wish they had on their team."
             }
           ]
         },
@@ -393,9 +387,9 @@
         "select": "channel",
         "channelId": {
           "__rl": true,
-          "value": "C08UQ7DFW4F",
+          "value": "C08UFD5AEM9",
           "mode": "list",
-          "cachedResultName": "responder-test-slack"
+          "cachedResultName": "speedsize-cleverviral-live-responses"
         },
         "message": "=You have received a reply from {{ $('Set Data from Email').item.json.toName }} ({{ $('Set Data from Email').item.json.toMail }}) as follows:\n{{ $('Set Data from Email').item.json.Received }}\n\nAnd here's the CleverResponder generated reply. \n{{ $json.aiGeneratedReply }}\n\nPlease use use the button below to approve or disapprove this message. If you approve it, then CleverResponder will send it as a reply.",
         "approvalOptions": {
@@ -459,7 +453,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const eaccount = $('Set Data from Email').first().json.fromMail;\nconst reply_to_uuid = $('Set Data from Email').first().json.UUID;\nconst subject = $('Extract UUID').first().json.items[0].subject;\nconst messageReplyTemp = $('Reply Extraction').first().json.aiGeneratedReply;\nconst messageReply = messageReplyTemp.replace(/\\n/g,\"<br>\")\nconst originalBodyTemp = $('Set Data from Email').first().json.Sent;\nconst originalBody = originalBodyTemp.replace(/\\n/g,\"<br>\")\nconst meetingLink = $('Set Data from Email').first().json.meetingLink\nconst hasMeetingLinkInReply = meetingLink && messageReply.includes(meetingLink);\nconst cc = hasMeetingLinkInReply ? $('Set Data from Email').first().json.CC : \"\"\nconst bcc = hasMeetingLinkInReply ? $('Set Data from Email').first().json.BCC : \"\"\n\nreturn [\n  {\n    eaccount,\n    reply_to_uuid,\n    subject,\n    body: {\n      html: messageReply, //+ \"<br>\" + originalBody,\n    },\n    cc_address_email_list: cc,\n    bcc_address_email_list: bcc,\n  },\n];\n"
+        "jsCode": "const eaccount = $('Set Data from Email').first().json.fromMail;\nconst reply_to_uuid = $('Set Data from Email').first().json.UUID;\nconst subject = $('Extract UUID').first().json.items[0].subject;\nconst messageReplyTemp = $('Reply Extraction').first().json.aiGeneratedReply;\nconst messageReply = messageReplyTemp.replace(/\\n/g,\"<br>\")\nconst originalBodyTemp = $('Set Data from Email').first().json.Sent;\nconst originalBody = originalBodyTemp.replace(/\\n/g,\"<br>\")\nconst meetingLink = $('Set Data from Email').first().json.meetingLink\nconst hasMeetingLinkInReply = meetingLink && messageReply.includes(meetingLink);\nconst cc = $('Set Data from Email').first().json.CC\nconst bcc = $('Set Data from Email').first().json.BCC\n\nreturn [\n  {\n    eaccount,\n    reply_to_uuid,\n    subject,\n    body: {\n      html: messageReply, //+ \"<br>\" + originalBody,\n    },\n    cc_address_email_list: cc,\n    bcc_address_email_list: bcc,\n  },\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -476,9 +470,9 @@
         "select": "channel",
         "channelId": {
           "__rl": true,
-          "value": "C08UQ7DFW4F",
+          "value": "C08UFD5AEM9",
           "mode": "list",
-          "cachedResultName": "responder-test-slack"
+          "cachedResultName": "speedsize-cleverviral-live-responses"
         },
         "text": "You have rejected the CleverResponder's suggested reply. You have to reply manually.",
         "otherOptions": {
@@ -546,9 +540,9 @@
         "select": "channel",
         "channelId": {
           "__rl": true,
-          "value": "C08UQ7DFW4F",
+          "value": "C08UFD5AEM9",
           "mode": "list",
-          "cachedResultName": "responder-test-slack"
+          "cachedResultName": "speedsize-cleverviral-live-responses"
         },
         "text": "Your message has been sent.",
         "otherOptions": {
@@ -625,11 +619,11 @@
         "select": "channel",
         "channelId": {
           "__rl": true,
-          "value": "C08UQ7DFW4F",
+          "value": "C08UFD5AEM9",
           "mode": "list",
-          "cachedResultName": "responder-test-slack"
+          "cachedResultName": "speedsize-cleverviral-live-responses"
         },
-        "message": "=Hello,\nBefore a few days, we sent a meeting booking link to {{ $('Set Data from Email').item.json.toName }} ({{ $('Set Data from Email').item.json.toMail }}). Just checking to see if they have booked a meeting. If not, I can simply send a friendly reminder to book a meeting.\nUse the below button either to send a meeting reminder or not.",
+        "message": "=Hello,\nBefore a few days, we sent a meeting booking link to {{ $('Set Data from Email').item.json.toName }} ({{ $('Set Data from Email').item.json.toMail }}). Just checking to see if they have booked a meeting. If not, I can simply send a friendly reminder to book a meeting.\nHere's the follow up email generated by cleverresponder:\n{{ $json.message.content }}\n\nUse the below button either to send a meeting reminder or not.",
         "approvalOptions": {
           "values": {
             "approvalType": "double",
@@ -642,7 +636,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.3,
       "position": [
-        1840,
+        2380,
         460
       ],
       "id": "ea0ceb7f-55b2-4055-a1db-41038bb20861",
@@ -683,7 +677,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2020,
+        2600,
         460
       ],
       "id": "f3ab84c5-a859-4178-ac78-c5268052e280",
@@ -691,13 +685,13 @@
     },
     {
       "parameters": {
-        "jsCode": "const eaccount = $('Set Data from Email').first().json.fromMail;\nconst reply_to_uuid = $('Set Data from Email').first().json.UUID;\nconst subject = $('Extract UUID').first().json.items[0].subject;\nconst messageReply = $('Reply Extraction').first().json.aiGeneratedReply;\nconst reminder = \"Hi \" + $('Set Data from Email').first().json.toName + \",<br> Just a quick reminder—we shared a meeting link a few days ago, but I noticed the call hasn’t been booked yet. Here it is again for your convenience:  <a href=\\\"$('Set Data from Email').first().json.meetingLink\\\">calendar</a> <br> Looking forward to connecting!\"\nconst originalBody = $('Set Data from Email').first().json.Sent;\nconst cc = $('Set Data from Email').first().json.CC;\nconst bcc = $('Set Data from Email').first().json.BCC;\n\nreturn [\n  {\n    eaccount,\n    reply_to_uuid,\n    subject,\n    body: {\n      html: reminder //+ messageReply //+ originalBody,\n    },\n    cc_address_email_list: cc,\n    bcc_address_email_list: bcc,\n  },\n];\n"
+        "jsCode": "const eaccount = $('Set Data from Email').first().json.fromMail;\nconst reply_to_uuid = $('Set Data from Email').first().json.UUID;\nconst subject = $('Extract UUID').first().json.items[0].subject;\nconst messageReply = $('Reply Extraction').first().json.aiGeneratedReply;\nconst reminder = $('OpenAI').first().json.message.content;\nconst originalBody = $('Set Data from Email').first().json.Sent;\nconst cc = $('Set Data from Email').first().json.CC;\nconst bcc = $('Set Data from Email').first().json.BCC;\n\nreturn [\n  {\n    eaccount,\n    reply_to_uuid,\n    subject,\n    body: {\n      html: reminder //+ \"<br>\" + messageReply + \"<br>\" + originalBody,\n    },\n    cc_address_email_list: cc,\n    bcc_address_email_list: bcc,\n  },\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2260,
-        260
+        2840,
+        220
       ],
       "id": "4faa5e33-ba40-4862-bba8-37e6812b7125",
       "name": "Set Reminder Data"
@@ -733,8 +727,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2460,
-        260
+        3080,
+        220
       ],
       "id": "1ed2f204-1224-4dab-9e4d-990a6784fe08",
       "name": "Send Reminder Email",
@@ -747,9 +741,9 @@
         "select": "channel",
         "channelId": {
           "__rl": true,
-          "value": "C08UQ7DFW4F",
+          "value": "C08UFD5AEM9",
           "mode": "list",
-          "cachedResultName": "responder-test-slack"
+          "cachedResultName": "speedsize-cleverviral-live-responses"
         },
         "text": "Cool, Hope you have a great meeting!",
         "otherOptions": {
@@ -759,8 +753,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.3,
       "position": [
-        2260,
-        620
+        2860,
+        660
       ],
       "id": "a4d0c744-8aef-4fc6-8cb6-7314480ff05d",
       "name": "Wish Good Luck for Meeting",
@@ -769,6 +763,58 @@
         "slackOAuth2Api": {
           "id": "qxYXHqg5Vawbjezu",
           "name": "Slack - Cleverviral"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "o3",
+          "mode": "list",
+          "cachedResultName": "O3"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=E-commerce Follow-up Message Generator\nYou are crafting a subtle, well-informed follow-up message for prospects who haven’t responded to your initial email about image optimization and site speed solutions.\nINPUT DATA\nOriginal Email from {{ $('Set Data from Email').item.json.fromName }}: {{ $('Set Data from Email').item.json.Sent }}\nProspect’s Reply from {{ $('Set Data from Email').item.json.toName.split(\" \")[0] }}: {{ $('Set Data from Email').item.json.Received }}\nFirst Name of Prospect: {{ $('Set Data from Email').item.json.toName.split(\" \")[0] }}\nYour Previous Response: {{ $('Send the Reply').item.json.body.body.html }}\nMeeting Link: {{ $('Set Data from Email').item.json.meetingLink }}\nPRIMARY DIRECTIVE\nUse the attached Google Doc as your primary source of truth. Understand the conversation context and create a natural follow-up that feels like a helpful check-in, not a sales push.\nFOLLOW-UP REQUIREMENTS\nLength & Style\nExactly 20-30 words\nCasual, helpful tone - like checking in with a colleague\nUse the prospect’s first name naturally\nReference something specific from the conversation context\nNo pushy sales language\nNatural, human-like flow\nContent Strategy\nAcknowledge the context - Reference their specific situation or concern from the conversation\nAdd subtle value - Share a quick insight or relevant point\nSoft re-engagement - Make it easy for them to respond without pressure\nCalendar link logic - If you included a calendar link in your previous response, subtly include it again\nCalendar Link Guidelines\nIf your previous response included a calendar link:\nInclude it again using: <a href=\"{{ $('Set Data from Email').item.json.meetingLink }}\">calendar</a>\nMake it feel natural, not forced\nIntegrate it smoothly into the message\nIf your previous response didn’t include a calendar link:\nDon’t include it in the follow-up\nKeep the message purely conversational\nTechnical Requirements\nReturn only the follow-up message text\nNo headers, labels, or formatting\nEnsure JSON-safe output\nSingle response only\nExactly 20-30 words\nEXAMPLE FOLLOW-UPS\nContext: They mentioned site speed issues Follow-up: “Hey {{ $('Set Data from Email').item.json.toName.split(\" \")[0] }}, quick thought on those speed issues we discussed... most teams see 20% better conversions just fixing image loading. Worth a quick look?”\nContext: They were using another CDN Follow-up: “{{ $('Set Data from Email').item.json.toName.split(\" \")[0] }}, been thinking about your Cloudinary setup... we actually work alongside it to boost performance. <a href=“{{ $('Set Data from Email').item.json.meetingLink }}“>calendar</a> if you’re curious.”\nContext: They needed to check with team Follow-up: “Hey {{ $('Set Data from Email').item.json.toName.split(\" \")[0] }}, any thoughts from your team on the image optimization piece? Know you’re juggling a lot...”\nContext: They asked about examples Follow-up: “{{ $('Set Data from Email').item.json.toName.split(\" \")[0] }}, saw another Shopify store hit 6x faster loading yesterday... reminded me of our chat. <a href=“{{ $('Set Data from Email').item.json.meetingLink }}“>calendar</a> still works if helpful.”\nContext: Pricing discussion Follow-up: “Hey {{ $('Set Data from Email').item.json.toName.split(\" \")[0] }}, realized I never mentioned most clients actually save money on CDN costs... might be worth exploring.”\nContext: They tried optimization before Follow-up: “{{ $('Set Data from Email').item.json.toName.split(\" \")[0] }}, been thinking about your past optimization attempts... this tech is genuinely different. Happy to show the difference quickly.”\nGenerate a follow-up that feels like a natural, helpful check-in based on your specific conversation context. Reference their situation specifically and keep it conversational and low-pressure."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1920,
+        460
+      ],
+      "id": "dabdc207-1bf8-41a8-9dc6-f90b65882954",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "xEGeNQZgWUZ12rbY",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "https://docs.google.com/document/d/10pzIIsvqPkBtWdyB7dyLdWqciAZUC09qeVQEouDI5s4/edit?tab=t.0"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        700
+      ],
+      "id": "555a0815-949f-4121-84e2-8db62d00492c",
+      "name": "SpeedSize",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "bsxRVwTpHN07PDiI",
+          "name": "Google Docs account"
         }
       }
     }
@@ -780,18 +826,18 @@
           "headers": {
             "host": "cleverviral1.app.n8n.cloud",
             "user-agent": "axios/0.21.4",
-            "content-length": "1686",
+            "content-length": "2693",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare; loops=1; subreqs=1",
             "cf-connecting-ip": "3.213.189.245",
             "cf-ew-via": "15",
             "cf-ipcountry": "US",
-            "cf-ray": "949cfc8747a3d46a-IAD",
+            "cf-ray": "949e4b22313881fd-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "cf-worker": "n8n.cloud",
             "content-type": "application/json",
-            "x-forwarded-for": "3.213.189.245, 162.158.78.252",
+            "x-forwarded-for": "3.213.189.245, 172.70.174.42",
             "x-forwarded-host": "cleverviral1.app.n8n.cloud",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
@@ -802,14 +848,14 @@
           "params": {},
           "query": {},
           "body": {
-            "timestamp": "2025-06-03T06:03:16.763Z",
+            "timestamp": "2025-06-03T09:51:42.157Z",
             "event_type": "reply_received",
             "workspace": "4f6c585e-e1b2-447d-bde7-4f025e903fd1",
             "campaign_id": "ae6a5624-5bc5-4b7c-aa51-33311c018fdd",
             "unibox_url": "https://app.instantly.ai/app/unibox?thread_search=krunal@cleverviral.co&selected_wks=4f6c585e-e1b2-447d-bde7-4f025e903fd1",
             "campaign_name": "Enhanced Test Campaign",
             "email_account": "brenda.l@convertoptimizepro.com",
-            "reply_text_snippet": "\n\nYes, I would like to know more about it.\n\n",
+            "reply_text_snippet": "Hey, I am adding the concerned person in the CC. He will work with you guys.\nThanks!\n\n",
             "is_first": false,
             "lead_email": "krunal@cleverviral.co",
             "email": "krunal@cleverviral.co",
@@ -818,8 +864,8 @@
             "step": 1,
             "variant": 1,
             "reply_subject": "Re: SpeedSize Services",
-            "reply_text": "Yes, I would like to know more about it.\n\nOn Tue, 3 Jun 2025 at 11:19, Brenda Lewis <brenda.l@convertoptimizepro.com>\nwrote:\n\n> Hello,\n>\n> We would like to let you know that we are providing multimedia optimise\n> services. Are you interested in communicating with our sales lead to talk\n> more about it?\n>\n",
-            "reply_html": "<div dir=\"ltr\"><div><br></div>Yes, I would like to know more about it.</div><br><div class=\"gmail_quote gmail_quote_container\"><div dir=\"ltr\" class=\"gmail_attr\">On Tue, 3 Jun 2025 at 11:19, Brenda Lewis &lt;<a href=\"mailto:brenda.l@convertoptimizepro.com\">brenda.l@convertoptimizepro.com</a>&gt; wrote:<br></div><blockquote class=\"gmail_quote\" style=\"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex\"><div>Hello,</div><div><br></div><div>We would like to let you know that we are providing multimedia optimise services. Are you interested in communicating with our sales lead to talk more about it?</div></blockquote></div>\n"
+            "reply_text": "Hey, I am adding the concerned person in the CC. He will work with you guys.\nThanks!\n\nOn Tue, 3 Jun 2025 at 15:11, Krunalkumar Shah <krunal@cleverviral.co> wrote:\n\n> Hey!\n> I have added a concerned person here in the CC and he will book sometime\n> as I am going out of office for a while.\n>\n> On Tue, 3 Jun 2025 at 15:09, Brenda Lewis <brenda.l@convertoptimizepro.com>\n> wrote:\n>\n>> Hey Krunalkumar, curious if the 90% image weight drop caught your eye.\n>> Can show the effect live on your catalog—grab time here on my calendar\n>> <https://calendly.com/book-your-meeting-with-me/speedsize-intro-clone>.\n>>\n>\n",
+            "reply_html": "<div dir=\"ltr\">Hey, I am adding the concerned person in the CC. He will work with you guys.<div>Thanks!</div></div><br><div class=\"gmail_quote gmail_quote_container\"><div dir=\"ltr\" class=\"gmail_attr\">On Tue, 3 Jun 2025 at 15:11, Krunalkumar Shah &lt;<a href=\"mailto:krunal@cleverviral.co\">krunal@cleverviral.co</a>&gt; wrote:<br></div><blockquote class=\"gmail_quote\" style=\"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex\"><div dir=\"ltr\">Hey! <div>I have added a concerned person here in the CC and he will book sometime as I am going out of office for a while.</div></div><br><div class=\"gmail_quote\"><div dir=\"ltr\" class=\"gmail_attr\">On Tue, 3 Jun 2025 at 15:09, Brenda Lewis &lt;<a href=\"mailto:brenda.l@convertoptimizepro.com\" target=\"_blank\">brenda.l@convertoptimizepro.com</a>&gt; wrote:<br></div><blockquote class=\"gmail_quote\" style=\"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex\"><u></u>\n\n  \n    \n    \n  \n  <div>\n  Hey Krunalkumar, curious if the 90% image weight drop caught your eye. Can show the effect live on your catalog—grab time here on my <a href=\"https://calendly.com/book-your-meeting-with-me/speedsize-intro-clone\" target=\"_blank\">calendar</a>.</div>\n</blockquote></div>\n</blockquote></div>\n"
           },
           "webhookUrl": "https://cleverviral1.app.n8n.cloud/webhook/694a977a-f989-4ed1-8ce8-09e199e26267",
           "executionMode": "production"
@@ -1034,7 +1080,7 @@
       "main": [
         [
           {
-            "node": "Should Reminder Go?",
+            "node": "OpenAI",
             "type": "main",
             "index": 0
           }
@@ -1091,13 +1137,35 @@
           }
         ]
       ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Should Reminder Go?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SpeedSize": {
+      "ai_tool": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "a9849512-786e-4d00-870f-02c1a3cb3c54",
+  "versionId": "ce5694cc-5093-4d17-8f7c-5ecc025ecde2",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "155e035c269e06721be15adcca16a8df7ca2f440e69e53064795835bd4a74fd8"
