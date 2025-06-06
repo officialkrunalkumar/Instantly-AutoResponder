@@ -514,7 +514,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{\n{\n\"eaccount\": $json.eaccount,\n\"reply_to_uuid\": $json.reply_to_uuid,\n\"subject\": $json.subject,\n\"body\": {\n\"html\": $json.body.html\n},\n\"cc_address_email_list\": $json.cc_address_email_list,\n\"bcc_address_email_list\": $json.bcc_address_email_list\n}\n}}",
+        "jsonBody": "={{\n{\n\"eaccount\": $json.eaccount,\n\"reply_to_uuid\": $json.reply_to_uuid,\n\"subject\": $json.subject,\n\"body\": {\n\"html\": $json.body.html\n},\n\"cc_address_email_list\": $('Set Data from Email').item.json.CC,\n\"bcc_address_email_list\": $('Set Data from Email').item.json.BCC\n}\n}}",
         "options": {
           "response": {
             "response": {
@@ -600,7 +600,8 @@
     },
     {
       "parameters": {
-        "amount": 3
+        "amount": 3,
+        "unit": "days"
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
@@ -826,46 +827,54 @@
           "headers": {
             "host": "cleverviral1.app.n8n.cloud",
             "user-agent": "axios/0.21.4",
-            "content-length": "2693",
+            "content-length": "12057",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare; loops=1; subreqs=1",
             "cf-connecting-ip": "3.213.189.245",
             "cf-ew-via": "15",
             "cf-ipcountry": "US",
-            "cf-ray": "949e4b22313881fd-IAD",
+            "cf-ray": "94a0454c4608c94e-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "cf-worker": "n8n.cloud",
             "content-type": "application/json",
-            "x-forwarded-for": "3.213.189.245, 172.70.174.42",
+            "x-forwarded-for": "3.213.189.245, 172.68.245.186",
             "x-forwarded-host": "cleverviral1.app.n8n.cloud",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "traefik-prod-users-gwc-18-7959cfc789-ft96v",
+            "x-forwarded-server": "traefik-prod-users-gwc-18-7959cfc789-d4gjm",
             "x-is-trusted": "yes",
             "x-real-ip": "3.213.189.245"
           },
           "params": {},
           "query": {},
           "body": {
-            "timestamp": "2025-06-03T09:51:42.157Z",
+            "timestamp": "2025-06-03T15:37:14.664Z",
             "event_type": "reply_received",
             "workspace": "4f6c585e-e1b2-447d-bde7-4f025e903fd1",
-            "campaign_id": "ae6a5624-5bc5-4b7c-aa51-33311c018fdd",
-            "unibox_url": "https://app.instantly.ai/app/unibox?thread_search=krunal@cleverviral.co&selected_wks=4f6c585e-e1b2-447d-bde7-4f025e903fd1",
-            "campaign_name": "Enhanced Test Campaign",
-            "email_account": "brenda.l@convertoptimizepro.com",
-            "reply_text_snippet": "Hey, I am adding the concerned person in the CC. He will work with you guys.\nThanks!\n\n",
-            "is_first": false,
-            "lead_email": "krunal@cleverviral.co",
-            "email": "krunal@cleverviral.co",
-            "lastName": "Shah",
-            "firstName": "Krunalkumar",
+            "campaign_id": "19eaca53-7130-4b56-a6d6-a7e44bbea7d5",
+            "unibox_url": "https://app.instantly.ai/app/unibox?thread_search=sgriggs@trainz.com&selected_wks=4f6c585e-e1b2-447d-bde7-4f025e903fd1",
+            "campaign_name": "Speedsize Cl1009 Find people on 100k visitors data_ 02/06/25",
+            "email_account": "brenda.l@convertmomentumx.com",
+            "reply_text_snippet": "Hello there. Our current load speed for our site is quite favorable. Before we decide on carving out time for a phone call, howmuch of a savings would we see? How does it save time, by caching things or compressing images? \nAnd how are these auto-fixes monitored, to make sure they don't break integrations? Is there a control panel to select what they can and cannot alter?\n\n\nI just need to know more actual detail before I'm willing to hop on a call. \n_______\n\n\nKEVIN GRIFFIS\n\nSenior Marketing Analyst\n\n\n\n\n\n\n\n\n\n(678) 745-3584 tel:(678)+745-3584\n\n\n\nkgriffis@trainz.com\n\n\n\nwww.trainz.com https://www.trainz.com/\n\n\n\n4195 Industry Way, Flowery Branch GA 30542\n\n \n\nhttps://www.facebook.com/trainzcom/  https://www.instagram.com/trainz.com_/  https://www.youtube.com/user/trainzstore\n\nhttps://www.greatplacetowork.com/certified-company/7022995\n\n\n\n\n\n---------- Forwarded message ---------\n",
+            "is_first": true,
+            "lead_email": "sgriggs@trainz.com",
+            "email": "sgriggs@trainz.com",
+            "website": "trainz.com",
+            "jobTitle": "CEO & Chief Engineer at Trainz.com",
+            "lastName": "Griggs",
+            "linkedIn": "https://www.linkedin.com/in/smgriggs/",
+            "Full Name": "Scott Griggs",
+            "firstName": "Scott",
+            "companyName": "Trainz",
+            "Linkedin Url": "https://www.linkedin.com/company/trainz",
+            "Product Category": "collectible model trains",
+            "Speedsize first line": "Scott - Trainz.com has varying download speeds reported as low as 4 kB/s and up to 150 kB/s for some users. As CEO, how are you balancing performance in your e-commerce experience while managing user expectations?",
             "step": 1,
-            "variant": 1,
-            "reply_subject": "Re: SpeedSize Services",
-            "reply_text": "Hey, I am adding the concerned person in the CC. He will work with you guys.\nThanks!\n\nOn Tue, 3 Jun 2025 at 15:11, Krunalkumar Shah <krunal@cleverviral.co> wrote:\n\n> Hey!\n> I have added a concerned person here in the CC and he will book sometime\n> as I am going out of office for a while.\n>\n> On Tue, 3 Jun 2025 at 15:09, Brenda Lewis <brenda.l@convertoptimizepro.com>\n> wrote:\n>\n>> Hey Krunalkumar, curious if the 90% image weight drop caught your eye.\n>> Can show the effect live on your catalog—grab time here on my calendar\n>> <https://calendly.com/book-your-meeting-with-me/speedsize-intro-clone>.\n>>\n>\n",
-            "reply_html": "<div dir=\"ltr\">Hey, I am adding the concerned person in the CC. He will work with you guys.<div>Thanks!</div></div><br><div class=\"gmail_quote gmail_quote_container\"><div dir=\"ltr\" class=\"gmail_attr\">On Tue, 3 Jun 2025 at 15:11, Krunalkumar Shah &lt;<a href=\"mailto:krunal@cleverviral.co\">krunal@cleverviral.co</a>&gt; wrote:<br></div><blockquote class=\"gmail_quote\" style=\"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex\"><div dir=\"ltr\">Hey! <div>I have added a concerned person here in the CC and he will book sometime as I am going out of office for a while.</div></div><br><div class=\"gmail_quote\"><div dir=\"ltr\" class=\"gmail_attr\">On Tue, 3 Jun 2025 at 15:09, Brenda Lewis &lt;<a href=\"mailto:brenda.l@convertoptimizepro.com\" target=\"_blank\">brenda.l@convertoptimizepro.com</a>&gt; wrote:<br></div><blockquote class=\"gmail_quote\" style=\"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex\"><u></u>\n\n  \n    \n    \n  \n  <div>\n  Hey Krunalkumar, curious if the 90% image weight drop caught your eye. Can show the effect live on your catalog—grab time here on my <a href=\"https://calendly.com/book-your-meeting-with-me/speedsize-intro-clone\" target=\"_blank\">calendar</a>.</div>\n</blockquote></div>\n</blockquote></div>\n"
+            "variant": 2,
+            "reply_subject": "Fwd: shopping experience Trainz",
+            "reply_text": "Hello there. Our current load speed for our site is quite favorable. Before\nwe decide on carving out time for a phone call, how much of a savings would\nwe see? How does it save time, by caching things or compressing images?\nAnd how are these auto-fixes monitored, to make sure they don't break\nintegrations? Is there a control panel to select what they can and cannot\nalter?\n\nI just need to know more actual detail before I'm willing to hop on a call.\n_______\nKevin Griffis\n*Senior Marketing Analyst*\n\n\n*(678) 745-3584 <(678)+745-3584>*\n*kgriffis@trainz.com* <kgriffis@trainz.com>\n*www.trainz.com* <https://www.trainz.com/>\n*4195 Industry Way, Flowery Branch GA 30542*\n\n<https://www.facebook.com/trainzcom/>\n<https://www.instagram.com/trainz.com_/>\n<https://www.youtube.com/user/trainzstore>\n\n[image: Great Place to Work]\n<https://www.greatplacetowork.com/certified-company/7022995>\n\n\n\n---------- Forwarded message ---------\nFrom: Brenda Lewis <brenda.l@convertmomentumx.com>\nDate: Tue, Jun 3, 2025 at 11:02 AM\nSubject: shopping experience Trainz\nTo: <sgriggs@trainz.com>\n\n\nScott, if you wanted to shop for a collectible model trains product and had\nto wait 3+ seconds for the media to load, would you continue with the\npurchase? Most shoppers don't, and this is negatively impacting Trainz's\nconversion rates right now.\n\nOur neuroscience-powered AI integration (speedsize .com):\n\n1. Speeds up product media to load 5X faster and still improving visual\nquality\n2. Auto-fixes Core Web Vitals issues, resolving Google's red warnings\n\nLeading collectible model trains brands using our Shopify integration have\nincreased conversion rates by 6–34%. Would you be open to a quick live demo?\n\nP.S. We'll install a complimentary AI-CDN on your staging environment so\nyou can test the impact side-by-side.\n\nBest,\nBrenda Lewis\nwww-speedsize-com\n\nPls reply 'No Thanks' if it's not a fit atm.\n",
+            "reply_html": "<div dir=\"ltr\"><div>Hello there. Our current load speed for our site is quite favorable. Before we decide on carving out time for a phone call, howmuch of a savings would we see? How does it save time, by caching things or compressing images? </div><div>And how are these auto-fixes monitored, to make sure they don&#39;t break integrations? Is there a control panel to select what they can and cannot alter?</div><div><div dir=\"ltr\" class=\"gmail_signature\" data-smartmail=\"gmail_signature\"><div dir=\"ltr\"><br></div><div dir=\"ltr\">I just need to know more actual detail before I&#39;m willing to hop on a call. <br>_______<table cellpadding=\"0\" cellspacing=\"0\" style=\"color:rgb(34,34,34);vertical-align:-webkit-baseline-middle\"><tbody><tr><td style=\"vertical-align:middle\"><h3 color=\"#000000\" style=\"margin:0px;color:rgb(0,0,0)\"><font face=\"tahoma, sans-serif\" size=\"4\">Kevin Griffis</font></h3><div><font color=\"#000000\" size=\"2\" face=\"tahoma, sans-serif\"><b>Senior Marketing Analyst</b></font></div><p color=\"#000000\" style=\"margin:0px;font-size:14px;line-height:22px\"><font color=\"#000000\" face=\"tahoma, sans-serif\"><b><br></b></font></p></td><td width=\"30\"><div style=\"width:30px\"></div></td><td color=\"#9b1c1c\" width=\"1\" style=\"width:1px;border-bottom:none;border-left:1px solid rgb(155,28,28)\"></td><td width=\"30\"><div style=\"width:30px\"></div></td><td style=\"vertical-align:middle\"><table cellpadding=\"0\" cellspacing=\"0\" style=\"vertical-align:-webkit-baseline-middle\"><tbody><tr height=\"25\" style=\"vertical-align:middle\"><td width=\"30\" style=\"vertical-align:middle\"><table cellpadding=\"0\" cellspacing=\"0\" style=\"vertical-align:-webkit-baseline-middle\"><tbody><tr><td style=\"vertical-align:bottom\"><span color=\"#9b1c1c\" width=\"11\" style=\"display:block;background-color:rgb(155,28,28)\"><img src=\"https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png\" color=\"#9b1c1c\" width=\"13\" style=\"display:block\"></span></td></tr></tbody></table></td><td style=\"padding:0px\"><b><font color=\"#000000\" face=\"tahoma, sans-serif\"><a href=\"tel:(678)+745-3584\" color=\"#000000\" style=\"color:rgb(17,85,204);font-size:12px\" target=\"_blank\"><font color=\"#000000\">(678) 745-3584</font></a></font></b></td></tr><tr height=\"25\" style=\"vertical-align:middle\"><td width=\"30\" style=\"vertical-align:middle\"><table cellpadding=\"0\" cellspacing=\"0\" style=\"vertical-align:-webkit-baseline-middle\"><tbody><tr><td style=\"vertical-align:bottom\"><span color=\"#9b1c1c\" width=\"11\" style=\"display:block;background-color:rgb(155,28,28)\"><img src=\"https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png\" color=\"#9b1c1c\" width=\"13\" style=\"display:block\"></span></td></tr></tbody></table></td><td style=\"padding:0px\"><a href=\"mailto:kgriffis@trainz.com\" color=\"#000000\" style=\"color:rgb(17,85,204);font-size:12px\" target=\"_blank\"><font color=\"#000000\" face=\"tahoma, sans-serif\"><b>kgriffis@trainz.com</b></font></a></td></tr><tr height=\"25\" style=\"vertical-align:middle\"><td width=\"30\" style=\"vertical-align:middle\"><table cellpadding=\"0\" cellspacing=\"0\" style=\"vertical-align:-webkit-baseline-middle\"><tbody><tr><td style=\"vertical-align:bottom\"><span color=\"#9b1c1c\" width=\"11\" style=\"display:block;background-color:rgb(155,28,28)\"><img src=\"https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png\" color=\"#9b1c1c\" width=\"13\" style=\"display:block\"></span></td></tr></tbody></table></td><td style=\"padding:0px\"><a href=\"https://www.trainz.com/\" color=\"#000000\" style=\"color:rgb(17,85,204);font-size:12px\" target=\"_blank\"><font color=\"#000000\" face=\"tahoma, sans-serif\"><b>www.trainz.com</b></font></a></td></tr><tr height=\"25\" style=\"vertical-align:middle\"><td width=\"30\" style=\"vertical-align:middle\"><table cellpadding=\"0\" cellspacing=\"0\" style=\"vertical-align:-webkit-baseline-middle\"><tbody><tr><td style=\"vertical-align:bottom\"><span color=\"#9b1c1c\" width=\"11\" style=\"display:block;background-color:rgb(155,28,28)\"><img src=\"https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-2x.png\" color=\"#9b1c1c\" width=\"13\" style=\"display:block\"></span></td></tr></tbody></table></td><td style=\"padding:0px\"><span color=\"#000000\" style=\"font-size:12px\"><font color=\"#000000\" face=\"tahoma, sans-serif\"><b>4195 Industry Way, Flowery Branch GA 30542</b></font></span></td></tr></tbody></table></td></tr></tbody></table><table cellpadding=\"0\" cellspacing=\"0\" style=\"color:rgb(34,34,34);vertical-align:-webkit-baseline-middle;width:504.688px\"><tbody><tr><td height=\"30\"><font face=\"tahoma, sans-serif\"> </font><table cellpadding=\"0\" cellspacing=\"0\" style=\"vertical-align:-webkit-baseline-middle;font-family:Arial;width:504.688px\"><tbody><tr><td height=\"30\"><font face=\"tahoma, sans-serif\"><a href=\"https://www.facebook.com/trainzcom/\" style=\"color:rgb(17,85,204)\" target=\"_blank\"><img src=\"https://drive.google.com/uc?id=1KKHnQpsOO37MtO-dfdsx98tjQR7OEORW&amp;export=download\" width=\"38\" height=\"38\" style=\"margin-right:0px\"></a>  <a href=\"https://www.instagram.com/trainz.com_/\" style=\"color:rgb(17,85,204)\" target=\"_blank\"><img src=\"https://drive.google.com/uc?id=1A5TNkSMgecL6VcAGiDEq2UBCVTk_Zc9v&amp;export=download\" width=\"36\" height=\"36\" style=\"margin-right:0px\"></a>  <a href=\"https://www.youtube.com/user/trainzstore\" style=\"color:rgb(17,85,204)\" target=\"_blank\"><img src=\"https://drive.google.com/uc?id=1Zrwo-y3XFeSLpyZOH7S6fsHyxXYK7Vk2&amp;export=download\" width=\"38\" height=\"38\" style=\"margin-right:0px\"></a><br></font></td></tr><tr><td color=\"#9b1c1c\" height=\"1\" style=\"width:504.688px;border-bottom:1px solid rgb(155,28,28);border-left:none;display:block\"></td></tr><tr><td height=\"30\"><font face=\"tahoma, sans-serif\"><br><a href=\"https://www.greatplacetowork.com/certified-company/7022995\" style=\"color:rgb(17,85,204)\" target=\"_blank\"><img src=\"https://drive.google.com/uc?id=1QMe5Wh56CL1PDxKIH3JKn-ahY9HcuQTJ&amp;export=download\" width=\"318\" height=\"104\" alt=\"Great Place to Work\" style=\"margin-right:0px\"></a></font></td></tr></tbody></table></td></tr></tbody></table></div></div></div><br><br><div class=\"gmail_quote gmail_quote_container\"><div dir=\"ltr\" class=\"gmail_attr\"><br></div><div><div class=\"gmail_quote\"><div dir=\"ltr\" class=\"gmail_attr\">---------- Forwarded message ---------<br>From: <strong class=\"gmail_sendername\" dir=\"auto\">Brenda Lewis</strong> <span dir=\"auto\">&lt;<a href=\"mailto:brenda.l@convertmomentumx.com\" target=\"_blank\">brenda.l@convertmomentumx.com</a>&gt;</span><br>Date: Tue, Jun 3, 2025 at 11:02 AM<br>Subject: shopping experience Trainz<br>To:  &lt;<a href=\"mailto:sgriggs@trainz.com\" target=\"_blank\">sgriggs@trainz.com</a>&gt;<br></div><br><br>Scott, if you wanted to shop for a collectible model trains product and had to wait 3+ seconds for the media to load, would you continue with the purchase? Most shoppers don&#39;t, and this is negatively impacting Trainz&#39;s conversion rates right now.<br>\n<br>\nOur neuroscience-powered AI integration (speedsize .com):<br>\n<br>\n1. Speeds up product media to load 5X faster and still improving visual quality  <br>\n2. Auto-fixes Core Web Vitals issues, resolving Google&#39;s red warnings<br>\n<br>\nLeading collectible model trains brands using our Shopify integration have increased conversion rates by 6–34%. Would you be open to a quick live demo?<br>\n<br>\nP.S. We&#39;ll install a complimentary AI-CDN on your staging environment so you can test the impact side-by-side.<br>\n<br>\nBest,<br>\nBrenda Lewis<br>\nwww-speedsize-com<br>\n<br>\nPls reply &#39;No Thanks&#39; if it&#39;s not a fit atm.<br>\n</div></div>\n</div></div>\n"
           },
           "webhookUrl": "https://cleverviral1.app.n8n.cloud/webhook/694a977a-f989-4ed1-8ce8-09e199e26267",
           "executionMode": "production"
@@ -1165,7 +1174,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "ce5694cc-5093-4d17-8f7c-5ecc025ecde2",
+  "versionId": "f8cfffd3-e77b-46f6-90ec-867117c2bfde",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "155e035c269e06721be15adcca16a8df7ca2f440e69e53064795835bd4a74fd8"
